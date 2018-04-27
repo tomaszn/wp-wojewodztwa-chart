@@ -1,0 +1,23 @@
+div.wojewodztwa path {
+  stroke-width: 1px;
+  stroke: #000000;
+  cursor: pointer;
+}
+
+div.wojewodztwa path:hover, div.wojewodztwa path.highlighted {
+  fill: #ffffff;
+}
+
+div.wojewodztwa div.tooltip {
+  position: absolute;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  font-weight: bold;
+  padding: 4px 8px;
+  display: none;
+}
+
+div.wojewodztwa text.label {
+  text-shadow: 0px 0px 12px white;
+}
