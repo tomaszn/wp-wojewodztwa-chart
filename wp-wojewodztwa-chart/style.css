@@ -4,6 +4,7 @@ div.wojewodztwa path {
   cursor: pointer;
 }
 
+/*
 div.wojewodztwa path:hover, div.wojewodztwa path.highlighted {
   fill: #ffffff;
 }
@@ -17,7 +18,10 @@ div.wojewodztwa div.tooltip {
   padding: 4px 8px;
   display: none;
 }
+*/
 
 div.wojewodztwa text.label {
   text-shadow: 0px 0px 12px white;
 }
+
+div.wojewodztwa .tick text {}

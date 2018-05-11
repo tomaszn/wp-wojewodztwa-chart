@@ -28,19 +28,25 @@ Log in as administrator to WP, check if the plugin is on the list and `Activate`
 
 Shortcode name: `wojewodztwa_chart`
 
-* data: URL to TSV file, see example below
+* data: URL to a data file, see below
 * column: column name from data file
+* scheme: color scheme from [d3-scale-chromatic docs](https://github.com/d3/d3-scale-chromatic), default: 'schemeBlues'
+* ticks: [approximate number of representative values](https://github.com/d3/d3-scale/blob/master/README.md#continuous_ticks)
 
-Data files are TSV:
+Example:
+```
+[wojewodztwa_chart data="https://mysite.pl/wp-content/uploads/2018/04/mapa_testowe_dane.tsv" column="AVG_FWQ"]
+```
+
+## Supported data format
+
+Data files are tab-separated values (TSV), encoded in UTF-8, for example:
 ```
 WOJEWÓDZTWO	AVG_FWQ	SUM_KL
 dolnośląskie	110.16	159
 ...
 ```
-Example:
-```
-[wojewodztwa_chart data="https://mysite.pl/wp-content/uploads/2018/04/mapa_testowe_dane.tsv" column="AVG_FWQ"]
-```
+Excel users can "Save as..." as "Text (Tab delimited) (*.txt)", then reopen in Notepad and "Save as..." as "Unicode (UTF-8)".
 
 ## Authors
 
