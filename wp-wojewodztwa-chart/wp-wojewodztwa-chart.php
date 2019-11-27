@@ -3,7 +3,7 @@
 Plugin Name:  Wojewodztwa Chart
 Plugin URI:   https://github.com/tomaszn/wp-wojewodztwa-chart
 Description:  Simple charts with Polish voivodships
-Version:      20191126
+Version:      20191127
 Author:       Tomasz Nowak
 Author URI:   https://github.com/tomaszn
 License:      GPLv2 or later
@@ -23,11 +23,14 @@ function wojewodztwa_chart( $atts , $content = null ) {
 	wp_localize_script('wojewodztwa-script', 'plugin_url', plugins_url( '/', __FILE__));
 	wp_enqueue_script( 'wojewodztwa-script' );
 
+	$hash = crc32( serialize($atts) );
+	$target = 'woj' . $hash;
+	$atts['target'] = $target;
 	$params = json_encode( $atts );
 
 	// return HTML code
 	return <<<EOF
-<div class="wojewodztwa">
+<div class="wojewodztwa" id="$target">
 </div>
 <script>
   jQuery( document ).ready( function( $ ) {

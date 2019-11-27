@@ -3,7 +3,7 @@ function wojewodztwa_insert(params) {
     params = JSON.parse(params);
 
     //Map dimensions (in pixels)
-    var width = document.getElementsByClassName("wojewodztwa")[0].clientWidth,
+    var width = document.getElementById(params.target).clientWidth,
         height = width * (566 / 600);
 
     //Map projection
@@ -17,7 +17,7 @@ function wojewodztwa_insert(params) {
         .projection(projection);
 
     //Create an SVG
-    var svg = d3.select("div.wojewodztwa").append("svg")
+    var svg = d3.select("#" + params.target).append("svg")
         .attr("width", width)
         .attr("height", height);
 
