@@ -26,7 +26,15 @@ function wojewodztwa_chart( $atts , $content = null ) {
 	$params = json_encode( $atts );
 
 	// return HTML code
-	return '<div class="wojewodztwa"></div><script>jQuery( document ).ready( function( $ ) { wojewodztwa_insert(\'' . $params . '\'); });</script>';
+	return <<<EOF
+<div class="wojewodztwa">
+</div>
+<script>
+  jQuery( document ).ready( function( $ ) {
+    wojewodztwa_insert('$params');
+  });
+</script>
+EOF;
 
 }
 add_shortcode( 'wojewodztwa_chart', 'wojewodztwa_chart' );
