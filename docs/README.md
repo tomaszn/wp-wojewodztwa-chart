@@ -30,7 +30,7 @@ Shortcode name: `wojewodztwa_chart`
 
 * data: URL to a data file, see below
 * column: column name from data file
-* scheme: color scheme from [d3-scale-chromatic docs](https://github.com/d3/d3-scale-chromatic), default: "schemeBlues"
+* scheme: continuous interpolator name from [d3-scale-chromatic docs](https://github.com/d3/d3-scale-chromatic), default: "interpolateBlues"
 * ticks: [approximate number of representative values](https://github.com/d3/d3-scale/blob/master/README.md#continuous_ticks), default: 5
 
 Example:
@@ -46,7 +46,7 @@ WOJEWÓDZTWO	AVG_FWQ	SUM_KL
 dolnośląskie	110.16	159
 ...
 ```
-Excel users can "Save as..." as "Text (Tab delimited) (*.txt)", then reopen in Notepad and "Save as..." as "Unicode (UTF-8)".
+Excel users can "Save as..." as "Text (Tab delimited) (\*.txt)", then reopen in Notepad and "Save as..." as "Unicode (UTF-8)".
 
 ## Authors
 

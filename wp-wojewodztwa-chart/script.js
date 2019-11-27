@@ -46,38 +46,37 @@ function wojewodztwa_insert(params) {
     ]).then(function(results) {
         var geodata = results[0];
 
-        // A position encoding for the key only.
-        var x = d3.scaleLinear()
-            .domain([d3.min(datafile.values()), d3.max(datafile.values())])
-            .range([0, 260 * (width / 600)]);
+        var domain = [d3.min(datafile.values()), d3.max(datafile.values())];
+        var ticks = d3.scaleLinear().domain(domain).ticks(params.ticks || 5);
+        var normalize = d3.scaleThreshold().domain(ticks).range(d3.range(0, 1, 1 / ticks.length));
+
         console.log(datafile);
-        console.log(x.domain());
+        console.log(domain, ticks);
 
-        var ticks = params.ticks || 5;
-        var color = d3.scaleThreshold()
-            .domain(x.ticks(ticks))
-            .range(d3[params.scheme || 'schemeBlues'][ticks]);
-        console.log(color.domain());
-
-        // Get province color
-        function fillFn(d) {
-            return color(datafile.get(nameFn(d)));
+        function colorFn(val) {
+            return d3[params.scheme || 'interpolateBlues'](normalize(val));
         }
 
+        // A position encoding for the key only.
+        var xScale = d3.scaleLinear()
+            .domain(domain)
+            .range([0, width * 0.45]);
+
         var xAxis = d3.axisBottom()
-            .scale(x)
+            .scale(xScale)
             .tickSize(13)
             .tickFormat(d3.format('d'))
-            .tickValues(color.domain());
+            .tickValues(ticks);
 
         // kolorowe paski
         g.selectAll("rect")
-            .data(color.range().map(function(d, i) {
-                return {
-                    x0: i ? x(color.domain()[i - 1]) : x.range()[0],
-                    x1: i < color.domain().length ? x(color.domain()[i]) : x.range()[1],
-                    z: d
+            .data(ticks.map(function(d, i) {
+                var props = {
+                    x0: i ? xScale(ticks[i-1]) : 0,
+                    x1: i < ticks.length-1 ? xScale(ticks[i]) : xScale(xScale.domain()[1]),
+                    z: i ? colorFn(ticks[i-1]) : colorFn(domain[0])
                 };
+                return props;
             }))
             .enter().append("rect")
                 .attr("height", 8)
@@ -89,6 +88,12 @@ function wojewodztwa_insert(params) {
             .attr("class", "caption")
             .attr("y", -6)
             .style("fill", "black");
+
+        // Get province color
+        function fillFn(d) {
+            var val = datafile.get(nameFn(d));
+            return colorFn(val);
+        }
 
         //Create a path for each map feature in the data
         features.selectAll("path")
