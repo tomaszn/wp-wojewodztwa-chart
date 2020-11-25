@@ -65,7 +65,7 @@ function wojewodztwa_insert(params) {
         var xAxis = d3.axisBottom()
             .scale(xScale)
             .tickSize(13)
-            .tickFormat(d3.format('d'))
+            .tickFormat(d3.format(params.tick_format || 'd'))
             .tickValues(ticks);
 
         // kolorowe paski

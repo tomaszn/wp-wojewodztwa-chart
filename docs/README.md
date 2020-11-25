@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Current WordPress (tested on 3.9.5).
+Current WordPress (tested on 3.9.5, 5.5.3).
 
 ### Installing
 
@@ -32,6 +32,7 @@ Shortcode name: `wojewodztwa_chart`
 * column: column name from data file
 * scheme: continuous interpolator name from [d3-scale-chromatic docs](https://github.com/d3/d3-scale-chromatic), default: "interpolateBlues"
 * ticks: [approximate number of representative values](https://github.com/d3/d3-scale/blob/master/README.md#continuous_ticks), default: 5
+* tick\_format: display format for generated thresholds, see [d3-format#locale\_format](https://github.com/d3/d3-format#locale_format), default: "d" ("decimal notation, rounded to integer")
 
 Example:
 ```

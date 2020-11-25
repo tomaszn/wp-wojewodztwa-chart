@@ -3,7 +3,7 @@
 Plugin Name:  Wojewodztwa Chart
 Plugin URI:   https://github.com/tomaszn/wp-wojewodztwa-chart
 Description:  Simple charts with Polish voivodships
-Version:      20191127
+Version:      20201125
 Author:       Tomasz Nowak
 Author URI:   https://github.com/tomaszn
 License:      GPLv2 or later
