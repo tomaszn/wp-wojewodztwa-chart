@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Current WordPress (tested on 3.9.5, 5.5.3, 5.7.2).
+Current WordPress (tested on 3.9, 5.5, 5.7, 5.9).
 
 ### Installing
 
